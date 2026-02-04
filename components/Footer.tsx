@@ -1,75 +1,86 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, ExternalLink } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, ExternalLink, ShieldCheck, MapPin, Phone, Mail } from 'lucide-react';
 import Logo from './Logo';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-brand-navy text-slate-300">
-      <div className="max-w-7xl mx-auto px-4 pt-16 pb-8 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Company Brand */}
-          <div className="space-y-6">
-            <Logo light />
-            <p className="text-sm leading-relaxed text-slate-400">
-              Eibil Nidhi Limited is a public limited company registered under the Companies Act and regulated by the Ministry of Corporate Affairs (MCA). We are committed to fostering thrift and savings among our members.
+    <footer className="bg-white border-t-8 border-brand-navy pt-20">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-slate-100">
+          {/* Brand & Social */}
+          <div className="space-y-8">
+            <Logo />
+            <p className="text-sm text-slate-500 leading-relaxed font-medium">
+              Eibil Nidhi Limited is a public limited company providing secure financial assistance to its members. Registered under the Companies Act and regulated by the Ministry of Corporate Affairs (MCA).
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-brand-blue transition-colors bg-white/5 p-2 rounded-full"><Facebook size={20} /></a>
-              <a href="#" className="hover:text-brand-blue transition-colors bg-white/5 p-2 rounded-full"><Twitter size={20} /></a>
-              <a href="#" className="hover:text-brand-blue transition-colors bg-white/5 p-2 rounded-full"><Linkedin size={20} /></a>
+              <a href="#" className="bg-slate-100 p-2.5 rounded hover:bg-brand-blue hover:text-white transition-all"><Facebook size={20} /></a>
+              <a href="#" className="bg-slate-100 p-2.5 rounded hover:bg-brand-blue hover:text-white transition-all"><Twitter size={20} /></a>
+              <a href="#" className="bg-slate-100 p-2.5 rounded hover:bg-brand-blue hover:text-white transition-all"><Linkedin size={20} /></a>
+              <a href="#" className="bg-slate-100 p-2.5 rounded hover:bg-brand-blue hover:text-white transition-all"><Instagram size={20} /></a>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-white font-bold text-lg mb-6 uppercase tracking-wider">Quick Links</h3>
-            <ul className="space-y-4 text-sm font-medium">
-              <li><Link to="/about" className="hover:text-brand-blue flex items-center transition-colors"><ExternalLink size={14} className="mr-2"/> About Company</Link></li>
-              <li><Link to="/products" className="hover:text-brand-blue flex items-center transition-colors"><ExternalLink size={14} className="mr-2"/> Loan Products</Link></li>
-              <li><Link to="/products" className="hover:text-brand-blue flex items-center transition-colors"><ExternalLink size={14} className="mr-2"/> Deposit Schemes</Link></li>
-              <li><Link to="/investor-relations/financials" className="hover:text-brand-blue flex items-center transition-colors"><ExternalLink size={14} className="mr-2"/> Financial Reports</Link></li>
-              <li><Link to="/policies" className="hover:text-brand-blue flex items-center transition-colors"><ExternalLink size={14} className="mr-2"/> Policies</Link></li>
+          <div className="space-y-6">
+            <h3 className="text-brand-navy font-extrabold text-sm uppercase tracking-widest">Useful Links</h3>
+            <ul className="space-y-3 text-sm text-slate-500 font-bold">
+              <li><Link to="/about" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> About Us</Link></li>
+              <li><Link to="/products" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> Product Catalog</Link></li>
+              <li><Link to="/investor-relations/financials" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> Investor Relations</Link></li>
+              <li><Link to="/policies" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> Regulatory Policies</Link></li>
+              <li><Link to="/contact" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> Contact Support</Link></li>
             </ul>
           </div>
 
-          {/* Important Products */}
-          <div>
-            <h3 className="text-white font-bold text-lg mb-6 uppercase tracking-wider">Our Products</h3>
-            <ul className="space-y-4 text-sm font-medium">
-              <li><Link to="/products#gold-loan" className="hover:text-brand-blue transition-colors">Gold Loans</Link></li>
-              <li><Link to="/products#property-loan" className="hover:text-brand-blue transition-colors">Property Loans</Link></li>
-              <li><Link to="/products#term-deposit" className="hover:text-brand-blue transition-colors">Fixed/Term Deposits</Link></li>
-              <li><Link to="/products#recurring-deposit" className="hover:text-brand-blue transition-colors">Recurring Deposits</Link></li>
-              <li><Link to="/products#savings" className="hover:text-brand-blue transition-colors">Savings Account</Link></li>
+          {/* Our Products */}
+          <div className="space-y-6">
+            <h3 className="text-brand-navy font-extrabold text-sm uppercase tracking-widest">Loan Products</h3>
+            <ul className="space-y-3 text-sm text-slate-500 font-bold">
+              <li><Link to="/products#gold-loan" className="hover:text-brand-blue">Gold Loans</Link></li>
+              <li><Link to="/products#property-loan" className="hover:text-brand-blue">Property Loans</Link></li>
+              <li><Link to="/products#term-deposit" className="hover:text-brand-blue">Fixed Deposit</Link></li>
+              <li><Link to="/products#recurring-deposit" className="hover:text-brand-blue">Recurring Deposit</Link></li>
+              <li><Link to="/products#savings" className="hover:text-brand-blue">Savings Account</Link></li>
             </ul>
           </div>
 
           {/* Contact Details */}
-          <div>
-            <h3 className="text-white font-bold text-lg mb-6 uppercase tracking-wider">Get in Touch</h3>
-            <ul className="space-y-4 text-sm">
+          <div className="space-y-6">
+            <h3 className="text-brand-navy font-extrabold text-sm uppercase tracking-widest">Connect with Us</h3>
+            <ul className="space-y-4 text-sm text-slate-500 font-bold">
               <li className="flex items-start">
                 <MapPin size={20} className="text-brand-red mr-3 shrink-0" />
-                <span>123 Financial Plaza, Corporate Road,<br />Mumbai, Maharashtra - 400001</span>
+                <span>Head Office: Financial Plaza, BKC Area,<br />Mumbai - 400051</span>
               </li>
               <li className="flex items-center">
                 <Phone size={20} className="text-brand-blue mr-3 shrink-0" />
-                <span className="font-bold">+91 98765 43210</span>
+                <span>+91 98765 43210</span>
               </li>
               <li className="flex items-center">
                 <Mail size={20} className="text-brand-blue mr-3 shrink-0" />
-                <span className="font-bold">contact@eibilnidhi.com</span>
+                <span>contact@eibilnidhi.com</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-white/10 text-center text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Eibil Nidhi Limited. CIN: U65991MH2024NLC123456. All Rights Reserved.</p>
-          <p className="mt-2">Disclaimer: Nidhi Companies are prohibited from doing chit funds, hire purchase insurance or micro finance business. We only lend to our members against collateral.</p>
+        {/* Regulatory Footer */}
+        <div className="py-12 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex items-center space-x-6 text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+            <span className="flex items-center"><ShieldCheck size={14} className="mr-1 text-green-500"/> PCI DSS SECURE</span>
+            <span className="flex items-center"><ShieldCheck size={14} className="mr-1 text-blue-500"/> MCA REGISTERED</span>
+            <span>CIN: U65991MH2024NLC123456</span>
+          </div>
+          <p className="text-[11px] text-slate-400 text-center md:text-right font-medium leading-relaxed max-w-xl">
+            © {new Date().getFullYear()} Eibil Nidhi Limited. Disclaimer: Nidhi Companies are prohibited from doing chit funds, hire purchase insurance or micro finance business. We only provide financial assistance to our members against collateral.
+          </p>
         </div>
+      </div>
+      <div className="bg-brand-navy py-4 text-center">
+         <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Member of the Nidhi Banking Federation of India</span>
       </div>
     </footer>
   );

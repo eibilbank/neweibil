@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eibil Nidhi Limited | Empowering Your Financial Future</title>
+    <title>Eibil Nidhi Limited | Personal Banking & Loans</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -12,10 +12,14 @@
           extend: {
             colors: {
               brand: {
-                blue: '#2071FF',
-                navy: '#003152',
-                red: '#E1004A',
+                blue: '#004c8f', // HDFC Blue
+                navy: '#003366', // Deep Corporate Navy
+                red: '#ed1c24',  // HDFC Red
+                gray: '#f5f7f9'  // Banking Background Gray
               }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
             }
           }
         }
@@ -23,14 +27,36 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
       body {
-        font-family: 'Inter', sans-serif;
+        background-color: #ffffff;
+        color: #333333;
       }
-      .font-serif {
-        font-family: 'Playfair+Display', serif;
+      .banking-shadow {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       }
+      .nav-gradient {
+        background: linear-gradient(to right, #003366, #004c8f);
+      }
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-marquee {
+        display: inline-flex;
+        animation: marquee 30s linear infinite;
+      }
+      .animate-in {
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      /* Custom utility bar scroll */
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
   <script type="importmap">
 {
@@ -44,7 +70,7 @@
 }
 </script>
 </head>
-  <body class="bg-gray-50 text-slate-900">
+  <body class="antialiased overflow-x-hidden">
     <div id="root"></div>
   </body>
 </html>

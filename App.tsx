@@ -9,13 +9,18 @@ import Products from './pages/Products';
 import InvestorRelations from './pages/InvestorRelations';
 import Contact from './pages/Contact';
 import Policies from './pages/Policies';
+import LoanApplication from './pages/LoanApplication';
+import MarketTicker from './components/MarketTicker';
 
 const App: React.FC = () => {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        <Navbar />
-        <main className="flex-grow pt-16 md:pt-20">
+        <div className="fixed top-0 w-full z-[100]">
+          <MarketTicker />
+          <Navbar />
+        </div>
+        <main className="flex-grow pt-32 md:pt-40">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -23,6 +28,7 @@ const App: React.FC = () => {
             <Route path="/investor-relations/:category" element={<InvestorRelations />} />
             <Route path="/policies" element={<Policies />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/apply-loan" element={<LoanApplication />} />
           </Routes>
         </main>
         <Footer />
