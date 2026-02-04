@@ -34,9 +34,10 @@ const LoanApplication: React.FC = () => {
   const handleSubmit = () => {
     setIsProcessing(true);
     
-    // Create new lead object
+    // Create new lead object with explicit type
     const newLead = {
       id: `ENL-L-${Math.floor(Math.random() * 90000) + 10000}`,
+      type: 'Loan', // Explicitly set type for admin filtering
       ...formData,
       status: 'Pending',
       date: new Date().toISOString().split('T')[0],

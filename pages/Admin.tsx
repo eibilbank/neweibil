@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { 
   LayoutDashboard, FileText, Users, Shield, 
   Settings, LogOut, Upload, Download, 
-  Trash2, Edit3, CheckCircle, AlertCircle, Database, LogOut as LogOutIcon, ArrowLeft, Filter, Printer, FileSpreadsheet, PiggyBank
+  Trash2, Edit3, CheckCircle, AlertCircle, Database, LogOut as LogOutIcon, ArrowLeft, Filter, Printer, FileSpreadsheet, PiggyBank, RefreshCw
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -22,11 +22,17 @@ const Admin: React.FC = () => {
 
   const [leads, setLeads] = useState<any[]>([]);
 
-  useEffect(() => {
-    // Load leads from localStorage
+  // Function to load leads from localStorage
+  const loadLeads = () => {
     const savedLeads = JSON.parse(localStorage.getItem('eibil_leads') || '[]');
     setLeads(savedLeads);
-  }, []);
+  };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      loadLeads();
+    }
+  }, [isLoggedIn, activeTab]);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +48,15 @@ const Admin: React.FC = () => {
     setIsLoggedIn(false);
     setUsername('');
     setPassword('');
-    setActiveTab('dashboard');
+    setActiveTab('leads');
+  };
+
+  const deleteLead = (id: string) => {
+    if (window.confirm('Are you sure you want to delete this lead?')) {
+      const updatedLeads = leads.filter(l => l.id !== id);
+      localStorage.setItem('eibil_leads', JSON.stringify(updatedLeads));
+      setLeads(updatedLeads);
+    }
   };
 
   const filteredLeads = useMemo(() => {
@@ -51,7 +65,11 @@ const Admin: React.FC = () => {
       const matchesYear = filterYear ? leadDate.getFullYear().toString() === filterYear : true;
       const matchesMonth = filterMonth ? (leadDate.getMonth() + 1).toString() === filterMonth : true;
       const matchesDate = filterDate ? lead.date === filterDate : true;
-      const matchesType = filterType ? lead.type === filterType : true;
+      
+      // Normalize type check - if lead.type is missing, assume it's 'Loan' (backward compatibility)
+      const normalizedLeadType = lead.type || 'Loan';
+      const matchesType = filterType ? normalizedLeadType === filterType : true;
+      
       return matchesYear && matchesMonth && matchesDate && matchesType;
     });
   }, [leads, filterYear, filterMonth, filterDate, filterType]);
@@ -112,11 +130,11 @@ const Admin: React.FC = () => {
                 placeholder="Password" 
               />
             </div>
-            <button type="submit" className="w-full bg-brand-navy text-white py-4 rounded-xl font-black uppercase tracking-widest hover:bg-brand-blue transition-all">
+            <button type="submit" className="w-full bg-brand-navy text-white py-4 rounded-xl font-black uppercase tracking-widest hover:bg-brand-blue transition-all shadow-lg">
               Initialize Session
             </button>
             <div className="text-center pt-2">
-               <Link to="/" className="text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-brand-blue">Back to Home Screen</Link>
+               <Link to="/" className="text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-brand-blue transition-colors">Back to Home Screen</Link>
             </div>
           </form>
         </div>
@@ -172,9 +190,14 @@ const Admin: React.FC = () => {
       {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-hidden">
         <header className="bg-white border-b border-slate-200 h-20 flex items-center justify-between px-8 no-print">
-          <h2 className="text-xl font-black text-brand-navy uppercase tracking-tighter">
-            {activeTab.toUpperCase()}
-          </h2>
+          <div className="flex items-center space-x-4">
+             <h2 className="text-xl font-black text-brand-navy uppercase tracking-tighter">
+               {activeTab.toUpperCase()}
+             </h2>
+             <button onClick={loadLeads} className="p-2 text-slate-400 hover:text-brand-blue transition-colors" title="Sync Data">
+                <RefreshCw size={18} />
+             </button>
+          </div>
           <div className="flex items-center space-x-4">
             <div className="text-right">
               <p className="text-xs font-black text-brand-navy uppercase">Vishnu Prasad</p>
@@ -195,7 +218,7 @@ const Admin: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 {[
                   { label: 'Total Leads', val: leads.length.toString(), trend: '+0', color: 'text-brand-blue' },
-                  { label: 'Loan Apps', val: leads.filter(l => !l.type || l.type === 'Loan').length.toString(), trend: '+0', color: 'text-brand-red' },
+                  { label: 'Loan Apps', val: leads.filter(l => (l.type || 'Loan') === 'Loan').length.toString(), trend: '+0', color: 'text-brand-red' },
                   { label: 'Savings Apps', val: leads.filter(l => l.type === 'Savings').length.toString(), trend: '+0', color: 'text-green-500' },
                   { label: 'New Apps', val: leads.filter(l => l.date === new Date().toISOString().split('T')[0]).length.toString(), trend: 'Today', color: 'text-orange-500' },
                 ].map((stat, i) => (
@@ -207,6 +230,10 @@ const Admin: React.FC = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+              
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 text-center text-slate-400">
+                <p className="text-xs font-bold uppercase tracking-widest">Select "Member Leads" from the sidebar to view incoming applications.</p>
               </div>
             </div>
           )}
@@ -311,7 +338,7 @@ const Admin: React.FC = () => {
                   </thead>
                   <tbody className="text-[13px] font-bold">
                     {filteredLeads.length > 0 ? filteredLeads.map((app, i) => (
-                      <tr key={i} className="border-b border-slate-50 hover:bg-slate-50 transition-colors">
+                      <tr key={app.id || i} className="border-b border-slate-50 hover:bg-slate-50 transition-colors">
                         <td className="px-6 py-4 text-brand-blue font-mono">{app.id}</td>
                         <td className="px-6 py-4">
                            <span className={`inline-flex items-center text-[9px] px-2 py-0.5 rounded-full font-black uppercase ${app.type === 'Savings' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'}`}>
@@ -331,7 +358,7 @@ const Admin: React.FC = () => {
                         </td>
                         <td className="px-6 py-4 text-right space-x-2 no-print">
                           <button className="p-1.5 text-slate-400 hover:text-brand-blue transition-colors"><Edit3 size={16}/></button>
-                          <button className="p-1.5 text-slate-400 hover:text-brand-red transition-colors"><Trash2 size={16}/></button>
+                          <button onClick={() => deleteLead(app.id)} className="p-1.5 text-slate-400 hover:text-brand-red transition-colors"><Trash2 size={16}/></button>
                         </td>
                       </tr>
                     )) : (
