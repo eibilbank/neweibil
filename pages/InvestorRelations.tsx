@@ -70,12 +70,12 @@ const InvestorRelations: React.FC = () => {
               <h2 className="text-2xl font-bold mb-6">Board of Directors</h2>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[
-                  { name: "Mr. Ramesh Kumar", role: "Chairman & Managing Director", img: "https://picsum.photos/200/200?random=1" },
-                  { name: "Mrs. Shanthi Devi", role: "Non-Executive Director", img: "https://picsum.photos/200/200?random=2" },
-                  { name: "Mr. Vijay Verma", role: "Independent Director", img: "https://picsum.photos/200/200?random=3" },
+                  { name: "Mr. Rajesh Prasad", role: "Chairman & Managing Director", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop" },
+                  { name: "Mrs. Sunita Devi", role: "Non-Executive Director", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop" },
+                  { name: "Mr. Vikram Singh", role: "Independent Director", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop" },
                 ].map((member, i) => (
                   <div key={i} className="text-center">
-                    <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-slate-100 mb-4">
+                    <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-slate-100 mb-4 shadow-lg">
                       <img src={member.img} alt={member.name} className="w-full h-full object-cover" />
                     </div>
                     <h4 className="font-bold text-lg">{member.name}</h4>
@@ -91,22 +91,22 @@ const InvestorRelations: React.FC = () => {
               <ul className="space-y-4 text-slate-300">
                 <li className="flex justify-between border-b border-slate-800 pb-2">
                   <span>Audit Committee</span>
-                  <span className="text-blue-400">View Composition</span>
+                  <span className="text-blue-400 cursor-pointer hover:underline">View Composition</span>
                 </li>
                 <li className="flex justify-between border-b border-slate-800 pb-2">
                   <span>Nomination & Remuneration Committee</span>
-                  <span className="text-blue-400">View Composition</span>
+                  <span className="text-blue-400 cursor-pointer hover:underline">View Composition</span>
                 </li>
                 <li className="flex justify-between border-b border-slate-800 pb-2">
                   <span>Stakeholders Relationship Committee</span>
-                  <span className="text-blue-400">View Composition</span>
+                  <span className="text-blue-400 cursor-pointer hover:underline">View Composition</span>
                 </li>
               </ul>
             </div>
           </div>
         );
       default:
-        return <div>Select a category from the menu.</div>;
+        return <div className="text-center py-20 text-slate-400 font-bold uppercase tracking-widest">Select a category from the menu.</div>;
     }
   };
 
@@ -124,13 +124,13 @@ const InvestorRelations: React.FC = () => {
           {/* Sidebar Navigation */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-2 sticky top-24">
-              <a href="#/investor-relations/notices" className={`block px-4 py-3 rounded-xl font-semibold mb-1 ${category === 'notices' ? 'bg-blue-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>
+              <a href="#/investor-relations/notices" className={`block px-4 py-3 rounded-xl font-semibold mb-1 ${category === 'notices' ? 'bg-blue-600 text-white shadow-lg' : 'text-slate-600 hover:bg-slate-50'}`}>
                 Shareholder Notices
               </a>
-              <a href="#/investor-relations/financials" className={`block px-4 py-3 rounded-xl font-semibold mb-1 ${category === 'financials' ? 'bg-blue-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>
+              <a href="#/investor-relations/financials" className={`block px-4 py-3 rounded-xl font-semibold mb-1 ${category === 'financials' ? 'bg-blue-600 text-white shadow-lg' : 'text-slate-600 hover:bg-slate-50'}`}>
                 Financial Results
               </a>
-              <a href="#/investor-relations/governance" className={`block px-4 py-3 rounded-xl font-semibold mb-1 ${category === 'governance' ? 'bg-blue-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>
+              <a href="#/investor-relations/governance" className={`block px-4 py-3 rounded-xl font-semibold mb-1 ${category === 'governance' ? 'bg-blue-600 text-white shadow-lg' : 'text-slate-600 hover:bg-slate-50'}`}>
                 Board Governance
               </a>
               <a href="#/policies" className={`block px-4 py-3 rounded-xl font-semibold mb-1 text-slate-600 hover:bg-slate-50`}>
@@ -141,7 +141,7 @@ const InvestorRelations: React.FC = () => {
 
           {/* Main Content Area */}
           <div className="lg:col-span-3">
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 md:p-12">
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 md:p-12 min-h-[500px]">
               {renderContent()}
             </div>
           </div>

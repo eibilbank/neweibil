@@ -6,11 +6,13 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
+import Savings from './pages/Savings';
 import InvestorRelations from './pages/InvestorRelations';
 import Contact from './pages/Contact';
 import Policies from './pages/Policies';
 import LoanApplication from './pages/LoanApplication';
 import MarketTicker from './components/MarketTicker';
+import Admin from './pages/Admin';
 
 const App: React.FC = () => {
   return (
@@ -25,10 +27,12 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/savings" element={<Savings />} />
             <Route path="/investor-relations/:category" element={<InvestorRelations />} />
             <Route path="/policies" element={<Policies />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/apply-loan" element={<LoanApplication />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>
         <Footer />

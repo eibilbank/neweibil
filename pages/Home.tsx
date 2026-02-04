@@ -49,8 +49,8 @@ const Home: React.FC = () => {
           
           <div className="hidden md:block absolute right-0 top-0 h-full w-1/2 overflow-hidden">
             <img 
-              src="https://images.unsplash.com/photo-1573164060897-425941c30243?auto=format&fit=crop&q=80&w=1200" 
-              alt="Banking Professional" 
+              src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=1200&auto=format&fit=crop" 
+              alt="Banking Professional Helping Customer" 
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-slate-100 via-slate-100/40 to-transparent"></div>
@@ -98,9 +98,9 @@ const Home: React.FC = () => {
             </div>
             <div className="p-10 lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
-                { label: 'Gold (24K/10g)', price: '₹72,450', change: '+₹240', status: 'Rising' },
-                { label: 'Gold (22K/10g)', price: '₹66,410', change: '+₹180', status: 'Rising' },
-                { label: 'Silver (1kg)', price: '₹84,500', change: '-₹110', status: 'Dipping' },
+                { label: 'Gold (24K/10g)', price: '72,450', change: '+240', status: 'Rising' },
+                { label: 'Gold (22K/10g)', price: '66,410', change: '+180', status: 'Rising' },
+                { label: 'Silver (1kg)', price: '84,500', change: '-110', status: 'Dipping' },
                 { label: 'Nifty 50', price: '22,453.20', change: '+98.45', status: 'Stable' },
               ].map((m, i) => (
                 <div key={i} className="bg-white/5 p-6 rounded border border-white/10 hover:bg-white/10 transition-colors">
@@ -110,7 +110,7 @@ const Home: React.FC = () => {
                       {m.status}
                     </span>
                   </div>
-                  <div className="text-2xl font-black text-white">{m.price}</div>
+                  <div className="text-2xl font-black text-white">₹{m.price}</div>
                   <div className={`text-xs font-bold mt-1 ${m.status === 'Rising' ? 'text-green-400' : 'text-red-400'}`}>
                     {m.change} (Last 24h)
                   </div>

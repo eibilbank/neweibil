@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-4 text-sm text-slate-500 font-bold">
               <li className="flex items-start">
                 <MapPin size={20} className="text-brand-red mr-3 shrink-0" />
-                <span>Head Office: Financial Plaza, BKC Area,<br />Mumbai - 400051</span>
+                <span>Head Office: 6B, Tilak Nagar, Jhalawar Road,<br />Kota, Rajasthan, India 324007</span>
               </li>
               <li className="flex items-center">
                 <Phone size={20} className="text-brand-blue mr-3 shrink-0" />
@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-center">
                 <Mail size={20} className="text-brand-blue mr-3 shrink-0" />
-                <span>contact@eibilnidhi.com</span>
+                <span>info@eibilgroup.in</span>
               </li>
             </ul>
           </div>
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
           <div className="flex items-center space-x-6 text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">
             <span className="flex items-center"><ShieldCheck size={14} className="mr-1 text-green-500"/> PCI DSS SECURE</span>
             <span className="flex items-center"><ShieldCheck size={14} className="mr-1 text-blue-500"/> MCA REGISTERED</span>
-            <span>CIN: U65991MH2024NLC123456</span>
+            <span>CIN: U65929RJ2018PLC061161</span>
           </div>
           <p className="text-[11px] text-slate-400 text-center md:text-right font-medium leading-relaxed max-w-xl">
             © {new Date().getFullYear()} Eibil Nidhi Limited. Disclaimer: Nidhi Companies are prohibited from doing chit funds, hire purchase insurance or micro finance business. We only provide financial assistance to our members against collateral.

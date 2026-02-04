@@ -1,106 +1,161 @@
 
 import React from 'react';
-// Added missing Landmark import from lucide-react
-import { Shield, Target, Eye, Handshake, Landmark } from 'lucide-react';
+import { Shield, Target, Eye, Handshake, Landmark, Award, MapPin, Users, CheckCircle2 } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
     <div className="bg-white">
-      {/* Banner */}
-      <section className="bg-slate-900 py-20 text-white text-center">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">About Eibil Nidhi</h1>
-          <p className="text-slate-400 max-w-2xl mx-auto">Commitment to transparency, integrity, and the financial well-being of our members.</p>
+      {/* Dynamic Header Banner */}
+      <section className="bg-brand-navy pt-24 pb-32 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
+          <div className="h-full w-full bg-slate-800" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/carbon-fibre.png')" }}></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="inline-flex items-center space-x-2 px-3 py-1.5 bg-brand-blue/20 rounded-full border border-brand-blue/30 mb-8">
+            <Award size={14} className="text-brand-red" />
+            <span className="text-[10px] font-black uppercase tracking-[0.2em]">Incorporated 2018 | Nidhi Rules Compliant</span>
+          </div>
+          <h1 className="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-6 leading-[0.85]">
+            TRUSTED <br /><span className="text-brand-blue">FINANCIAL</span> <br />PARTNER.
+          </h1>
+          <p className="text-slate-400 text-xl font-medium max-w-2xl leading-relaxed">
+            Eibil Nidhi Limited is a cooperative movement dedicated to empowering the residents of Kota and the wider Rajasthan region with secure financial solutions.
+          </p>
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="py-20">
+      {/* Corporate Identity Section */}
+      <section className="py-24 -mt-16 relative z-20">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">A Legacy of Trust & Growth</h2>
-              <div className="space-y-4 text-slate-600 leading-relaxed">
-                <p>
-                  Eibil Nidhi Limited was founded with a singular vision: to empower the common man through financial literacy and affordable credit. As a Nidhi company, we operate strictly under the rules of the Ministry of Corporate Affairs, ensuring that our operations are transparent and member-centric.
-                </p>
-                <p>
-                  Our primary objective is to encourage and afford all facilities for cultivating thrift and saving habits and to render all financial assistance to its members only by receiving long and short term deposits and in particular recurring, fixed and other deposits.
-                </p>
-                <p>
-                  With years of experience in the financial sector, our leadership brings together the best of traditional values and modern banking practices.
-                </p>
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div className="space-y-10">
+              <div className="bg-white p-10 rounded-[2.5rem] shadow-2xl border border-slate-100">
+                <div className="w-16 h-1 bg-brand-red mb-8"></div>
+                <h2 className="text-3xl font-black text-brand-navy uppercase tracking-tighter mb-6 leading-tight">
+                  A Legacy of Community <br />Banking in Kota
+                </h2>
+                <div className="space-y-6 text-slate-600 font-medium leading-relaxed">
+                  <p>
+                    Established in 2018 under the vision of financial inclusion, Eibil Nidhi Limited has consistently bridged the gap between traditional savings and modern credit needs. As a registered Nidhi Company (CIN: U65929RJ2018PLC061161), we are regulated by the Ministry of Corporate Affairs (MCA).
+                  </p>
+                  <p>
+                    Our core objective is to cultivate the habit of thrift and savings among our members. Unlike commercial banks, we operate on a mutual-benefit principle, where every member is a stakeholder in our collective success. We focus on ethical lending and secure wealth generation for the middle and lower-income segments of society.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 flex items-start space-x-4">
+                  <div className="bg-brand-blue/10 p-3 rounded-2xl text-brand-blue shrink-0">
+                    <MapPin size={24} />
+                  </div>
+                  <div>
+                    <h5 className="font-black text-brand-navy uppercase text-xs tracking-widest mb-1">Corporate HQ</h5>
+                    <p className="text-xs font-bold text-slate-500 leading-tight">6B, Tilak Nagar, Jhalawar Road, Kota, Rajasthan - 324007</p>
+                  </div>
+                </div>
+                <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 flex items-start space-x-4">
+                  <div className="bg-brand-red/10 p-3 rounded-2xl text-brand-red shrink-0">
+                    <Shield size={24} />
+                  </div>
+                  <div>
+                    <h5 className="font-black text-brand-navy uppercase text-xs tracking-widest mb-1">Statutory Compliance</h5>
+                    <p className="text-xs font-bold text-slate-500 leading-tight">Regulated under Nidhi Rules 2014 & Companies Act</p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1573164060897-425941c30243?auto=format&fit=crop&q=80&w=1200" 
-                alt="Office Environment" 
-                className="w-full h-full object-cover"
-              />
+
+            <div className="relative">
+              <div className="absolute -top-10 -right-10 w-64 h-64 bg-brand-blue/5 rounded-full blur-3xl"></div>
+              <div className="relative rounded-[3rem] overflow-hidden shadow-2xl h-[600px] border-8 border-white">
+                <img 
+                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop" 
+                  alt="Modern Office Building" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-8 -left-8 bg-brand-navy text-white p-10 rounded-[2.5rem] shadow-2xl">
+                <p className="text-4xl font-black mb-1 tracking-tighter text-brand-blue">6+ Years</p>
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">of Operational Trust</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Vision & Mission */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-10 rounded-2xl shadow-sm border border-slate-100">
-              <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-6">
-                <Eye size={32} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
-              <p className="text-slate-600 leading-relaxed">
-                To be the most trusted and preferred Nidhi company in India, setting benchmarks in member satisfaction and secure financial management, while contributing to the overall economic development of our community.
-              </p>
-            </div>
-            <div className="bg-white p-10 rounded-2xl shadow-sm border border-slate-100">
-              <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-6">
-                <Target size={32} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
-              <p className="text-slate-600 leading-relaxed">
-                To provide safe, secure, and rewarding investment opportunities to our members and to provide quick, collateral-based credit solutions at competitive rates with the highest level of professionalism and integrity.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Core Values */}
-      <section className="py-20">
+      {/* Strategic Pillars */}
+      <section className="py-24 bg-brand-gray">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-slate-900 mb-12">Our Core Values</h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="flex flex-col items-center">
-              <div className="w-20 h-20 bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-4 rotate-3 group hover:rotate-0 transition-transform">
-                <Shield size={32} />
+          <h2 className="text-4xl font-black text-brand-navy uppercase tracking-tighter mb-16">Institutional Pillars</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-12 rounded-[2.5rem] shadow-xl border border-slate-50 group hover:bg-brand-navy transition-all duration-500">
+              <div className="w-20 h-20 bg-blue-50 text-brand-blue rounded-3xl flex items-center justify-center mx-auto mb-10 group-hover:scale-110 transition-transform">
+                <Eye size={40} />
               </div>
-              <h4 className="font-bold">Trust</h4>
-              <p className="text-sm text-slate-500 mt-2">Built on 100% transparency</p>
+              <h3 className="text-2xl font-black text-brand-navy group-hover:text-white uppercase mb-6">Our Vision</h3>
+              <p className="text-slate-500 group-hover:text-slate-400 font-bold text-sm leading-relaxed">
+                To be the most preferred financial sanctuary for the people of Rajasthan, ensuring safety, growth, and digital convenience for every member.
+              </p>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="w-20 h-20 bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-4 -rotate-3 group hover:rotate-0 transition-transform">
-                <Handshake size={32} />
+
+            <div className="bg-white p-12 rounded-[2.5rem] shadow-xl border border-slate-50 group hover:bg-brand-navy transition-all duration-500">
+              <div className="w-20 h-20 bg-red-50 text-brand-red rounded-3xl flex items-center justify-center mx-auto mb-10 group-hover:scale-110 transition-transform">
+                <Target size={40} />
               </div>
-              <h4 className="font-bold">Member First</h4>
-              <p className="text-sm text-slate-500 mt-2">Member satisfaction is our ROI</p>
+              <h3 className="text-2xl font-black text-brand-navy group-hover:text-white uppercase mb-6">Our Mission</h3>
+              <p className="text-slate-500 group-hover:text-slate-400 font-bold text-sm leading-relaxed">
+                To provide swift, asset-backed credit and high-yield savings products that empower individuals and small businesses to achieve financial freedom.
+              </p>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="w-20 h-20 bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-4 rotate-6 group hover:rotate-0 transition-transform">
-                <Target size={32} />
+
+            <div className="bg-white p-12 rounded-[2.5rem] shadow-xl border border-slate-50 group hover:bg-brand-navy transition-all duration-500">
+              <div className="w-20 h-20 bg-slate-100 text-brand-navy rounded-3xl flex items-center justify-center mx-auto mb-10 group-hover:scale-110 transition-transform">
+                <Users size={40} />
               </div>
-              <h4 className="font-bold">Integrity</h4>
-              <p className="text-sm text-slate-500 mt-2">Commitment to ethical practices</p>
+              <h3 className="text-2xl font-black text-brand-navy group-hover:text-white uppercase mb-6">Member Focus</h3>
+              <p className="text-slate-500 group-hover:text-slate-400 font-bold text-sm leading-relaxed">
+                Creating a collaborative ecosystem where every member is treated with professional integrity and personalized financial care.
+              </p>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="w-20 h-20 bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-4 -rotate-6 group hover:rotate-0 transition-transform">
-                <Landmark size={32} />
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Eibil Nidhi? */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-center gap-20">
+            <div className="lg:w-1/2">
+              <h2 className="text-4xl font-black text-brand-navy uppercase tracking-tighter mb-10">The Eibil Advantage</h2>
+              <div className="space-y-6">
+                {[
+                  { title: "Direct MCA Oversight", desc: "Regulated strictly under the Ministry of Corporate Affairs, providing bank-grade safety for your deposits." },
+                  { title: "Highest FD Returns", desc: "Offering up to 10.5% p.a., significantly higher than commercial banking institutions." },
+                  { title: "Kota HQ Accessibility", desc: "Our physical presence in Tilak Nagar ensures local accountability and faster processing for our Rajasthan members." },
+                  { title: "Asset-Backed Security", desc: "All loans are collateralized against Gold or Property, maintaining a 0% NPA environment." }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start p-6 bg-slate-50 rounded-2xl hover:bg-brand-blue/5 transition-colors border border-slate-100">
+                    <CheckCircle2 size={24} className="text-brand-blue mr-4 shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-black text-brand-navy uppercase text-sm mb-1">{item.title}</h4>
+                      <p className="text-xs text-slate-500 font-bold">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <h4 className="font-bold">Security</h4>
-              <p className="text-sm text-slate-500 mt-2">Your money is safe with us</p>
+            </div>
+            <div className="lg:w-1/2 grid grid-cols-2 gap-4">
+               <div className="bg-brand-navy p-10 rounded-[2rem] text-white flex flex-col justify-end h-64">
+                  <Landmark size={32} className="text-brand-blue mb-4" />
+                  <p className="text-xs font-black uppercase tracking-widest text-slate-400">Secure Storage</p>
+                  <p className="text-xl font-black uppercase leading-tight">Bank-Grade Vaults</p>
+               </div>
+               <div className="bg-brand-red p-10 rounded-[2rem] text-white flex flex-col justify-end h-64 mt-12">
+                  <Users size={32} className="text-white mb-4" />
+                  <p className="text-xs font-black uppercase tracking-widest text-white/50">Community First</p>
+                  <p className="text-xl font-black uppercase leading-tight">Member Driven</p>
+               </div>
             </div>
           </div>
         </div>
