@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Linkedin, Instagram, ExternalLink, ShieldCheck, MapPin, Phone, Mail } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, ExternalLink, ShieldCheck, MapPin, Phone, Mail, Globe, ShieldAlert } from 'lucide-react';
 import Logo from './Logo';
 
 const Footer: React.FC = () => {
@@ -23,16 +23,21 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Institutional Links & Regulatory Portals */}
           <div className="space-y-6">
             <h3 className="text-brand-navy font-extrabold text-sm uppercase tracking-widest">Useful Links</h3>
             <ul className="space-y-3 text-sm text-slate-500 font-bold">
               <li><Link to="/about" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> About Us</Link></li>
               <li><Link to="/products" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> Product Catalog</Link></li>
               <li><Link to="/careers" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> Careers</Link></li>
-              <li><Link to="/investor-relations/financials" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> Investor Relations</Link></li>
-              <li><Link to="/policies" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> Regulatory Policies</Link></li>
-              <li><Link to="/contact" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> Contact Support</Link></li>
+              <li><Link to="/vigilance" className="text-brand-red hover:text-brand-navy flex items-center"><ShieldAlert size={14} className="mr-2"/> Vigilance & Safe Banking</Link></li>
+              <li className="pt-4 pb-1 border-t border-slate-100 mt-2">
+                <span className="text-[10px] text-brand-blue uppercase tracking-widest block mb-2">Regulatory Portals</span>
+              </li>
+              <li><a href="https://rbikehtahai.rbi.org.in/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-blue flex items-center"><Globe size={14} className="mr-2 opacity-50"/> RBI Kehta Hai</a></li>
+              <li><a href="https://udgam.rbi.org.in/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-blue flex items-center"><Globe size={14} className="mr-2 opacity-50"/> RBI UDGAM - Unclaimed Deposit</a></li>
+              <li><a href="https://cms.rbi.org.in/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-blue flex items-center"><Globe size={14} className="mr-2 opacity-50"/> RBI Complaint Management System</a></li>
+              <li><a href="https://sachet.rbi.org.in/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-blue flex items-center"><Globe size={14} className="mr-2 opacity-50"/> RBI Sachet Portal</a></li>
             </ul>
           </div>
 
@@ -45,6 +50,12 @@ const Footer: React.FC = () => {
               <li><Link to="/products#term-deposit" className="hover:text-brand-blue">Fixed Deposit</Link></li>
               <li><Link to="/products#recurring-deposit" className="hover:text-brand-blue">Recurring Deposit</Link></li>
               <li><Link to="/products#savings" className="hover:text-brand-blue">Savings Account</Link></li>
+              <li className="pt-4 border-t border-slate-100 mt-2">
+                <Link to="/policies" className="hover:text-brand-blue flex items-center"><ShieldCheck size={14} className="mr-2 opacity-50"/> Regulatory Policies</Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> Contact Support</Link>
+              </li>
             </ul>
           </div>
 

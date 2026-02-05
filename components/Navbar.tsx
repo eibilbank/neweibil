@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Search, User, LogIn, Activity, Home as HomeIcon, Globe, Briefcase, GraduationCap } from 'lucide-react';
+import { Menu, X, ChevronDown, Search, User, LogIn, Activity, Home as HomeIcon, Globe, Briefcase, GraduationCap, ShieldAlert, PiggyBank } from 'lucide-react';
 import Logo from './Logo';
 
 const Navbar: React.FC = () => {
@@ -17,6 +17,7 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { name: 'Home', path: '/', icon: HomeIcon },
     { name: 'About Us', path: '/about' },
+    { name: 'Savings', path: '/savings', icon: PiggyBank },
     { 
       name: 'Borrow', 
       path: '/products',
@@ -35,13 +36,9 @@ const Navbar: React.FC = () => {
       ]
     },
     { 
-      name: 'Savings', 
-      path: '/savings',
-      dropdown: [
-        { name: 'Savings Account', path: '/savings' },
-        { name: 'Mobile Banking', path: '/savings#digital' },
-        { name: 'NEFT/IMPS', path: '/savings#payments' },
-      ]
+      name: 'Safe Banking', 
+      path: '/vigilance',
+      icon: ShieldAlert
     },
     { name: 'Careers', path: '/careers' },
     { 
@@ -92,6 +89,8 @@ const Navbar: React.FC = () => {
                     to={link.path} 
                     className={`flex items-center ${location.pathname === link.path ? 'text-brand-blue' : 'text-brand-navy'} hover:text-brand-blue font-black text-[13px] uppercase tracking-tighter transition-colors cursor-pointer`}
                   >
+                    {link.name === 'Safe Banking' && <ShieldAlert size={14} className="mr-1 text-brand-red animate-pulse" />}
+                    {link.name === 'Savings' && <PiggyBank size={14} className="mr-1 text-brand-blue" />}
                     {link.name}
                     {link.dropdown && <ChevronDown className="ml-1 w-3 h-3 text-slate-400 group-hover:text-brand-blue" />}
                   </Link>
@@ -150,7 +149,11 @@ const Navbar: React.FC = () => {
           </div>
           {navLinks.map((link) => (
             <div key={link.name} className="border-b border-slate-100 pb-4">
-              <Link to={link.path} className="font-black text-brand-navy py-2 text-lg uppercase tracking-tight block">{link.name}</Link>
+              <Link to={link.path} className={`font-black ${link.name === 'Safe Banking' ? 'text-brand-red' : 'text-brand-navy'} py-2 text-lg uppercase tracking-tight block flex items-center`}>
+                {link.name === 'Safe Banking' && <ShieldAlert size={20} className="mr-2" />}
+                {link.name === 'Savings' && <PiggyBank size={20} className="mr-2 text-brand-blue" />}
+                {link.name}
+              </Link>
               {link.dropdown && (
                 <div className="pl-4 space-y-3 mt-3">
                   {link.dropdown.map((sub) => (

@@ -16,6 +16,7 @@ import Admin from './pages/Admin';
 import NRI from './pages/NRI';
 import SME from './pages/SME';
 import Careers from './pages/Careers';
+import Vigilance from './pages/Vigilance';
 
 const App: React.FC = () => {
   return (
@@ -39,6 +40,7 @@ const App: React.FC = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/apply-loan" element={<LoanApplication />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/vigilance" element={<Vigilance />} />
           </Routes>
         </main>
         <Footer />
