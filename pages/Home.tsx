@@ -5,7 +5,7 @@ import {
   ArrowRight, Landmark, BadgePercent, Shield, Users, 
   TrendingUp, Wallet, Calculator, Info, PhoneCall,
   UserPlus, CreditCard, PieChart, ShieldCheck, CheckCircle2,
-  ExternalLink, BarChart3
+  ExternalLink, BarChart3, Zap
 } from 'lucide-react';
 
 const Home: React.FC = () => {
@@ -55,8 +55,52 @@ const Home: React.FC = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-slate-100 via-slate-100/40 to-transparent"></div>
           </div>
+
+          {/* Online Personal Loan Spotlight - Desktop Overlay */}
+          <div className="hidden md:block absolute right-8 lg:right-16 top-1/2 -translate-y-1/2 z-30 w-80 lg:w-96 animate-in">
+            <div className="bg-brand-navy rounded-[2.5rem] p-8 lg:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.3)] border-2 border-brand-blue/30 relative overflow-hidden group">
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-brand-blue/10 rounded-full blur-3xl group-hover:bg-brand-blue/20 transition-all duration-500"></div>
+              <div className="relative z-10">
+                <div className="flex items-center space-x-3 mb-6">
+                  <div className="w-12 h-12 bg-brand-red rounded-2xl flex items-center justify-center shadow-lg shadow-brand-red/20 animate-pulse">
+                    <Zap className="text-white" size={24} strokeWidth={2.5} />
+                  </div>
+                  <h3 className="text-2xl font-black text-white uppercase tracking-tighter leading-tight">Online <br/> Personal Loan</h3>
+                </div>
+                <p className="text-blue-100/70 font-bold text-sm mb-8 leading-relaxed uppercase tracking-wider">
+                  Instant approval <br/> 
+                  <span className="text-brand-blue">•</span> Minimal documents <br/> 
+                  <span className="text-brand-blue">•</span> Fast disbursal
+                </p>
+                <Link to="/apply-loan" className="block w-full bg-white text-brand-navy py-4 rounded-2xl font-black text-center uppercase tracking-[0.2em] text-xs hover:bg-brand-red hover:text-white transition-all shadow-xl hover:shadow-brand-red/20">
+                  Apply Now
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+
+      {/* Online Personal Loan Spotlight - Mobile Highlighted Section (Below Hero) */}
+      <div className="md:hidden bg-slate-100 px-4 pb-8 -mt-4 animate-in">
+        <div className="bg-brand-navy rounded-[2rem] p-8 shadow-[0_15px_40px_rgba(0,0,0,0.2)] border-2 border-brand-blue/20 relative overflow-hidden">
+          <div className="absolute -top-12 -right-12 w-32 h-32 bg-brand-blue/10 rounded-full blur-2xl"></div>
+          <div className="relative z-10">
+            <div className="flex items-center space-x-4 mb-4">
+              <div className="w-10 h-10 bg-brand-red rounded-xl flex items-center justify-center shadow-lg animate-pulse">
+                <Zap className="text-white" size={20} strokeWidth={3} />
+              </div>
+              <h3 className="text-xl font-black text-white uppercase tracking-tighter">Online Personal Loan</h3>
+            </div>
+            <p className="text-blue-100/60 font-bold text-[11px] mb-6 uppercase tracking-widest leading-none">
+              Instant approval • Minimal docs • Fast disbursal
+            </p>
+            <Link to="/apply-loan" className="block w-full bg-brand-red text-white py-4 rounded-xl font-black text-center uppercase tracking-widest text-xs shadow-lg">
+              Apply Now
+            </Link>
+          </div>
+        </div>
+      </div>
 
       {/* Quick Action Hub */}
       <section className="bg-white border-b border-slate-100 relative z-20">
