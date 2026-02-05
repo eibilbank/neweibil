@@ -190,8 +190,8 @@ const Admin: React.FC = () => {
     fileInputRef.current?.click();
   };
 
-  const processFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+  const processFileUpload = (processE: React.ChangeEvent<HTMLInputElement>) => {
+    const file = processE.target.files?.[0];
     if (!file) return;
 
     let updatedDocs;
@@ -209,7 +209,7 @@ const Admin: React.FC = () => {
     localStorage.setItem('eibil_docs', JSON.stringify(updatedDocs));
     setDocuments(updatedDocs);
     setReplacingDocId(null);
-    if (e.target) e.target.value = '';
+    if (processE.target) processE.target.value = '';
   };
 
   const purgeDoc = (id: number) => {
@@ -270,11 +270,11 @@ const Admin: React.FC = () => {
             )}
             <div className="space-y-2">
               <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Terminal UID</label>
-              <input type="text" value={username} onChange={e => setUsername(e.target.value)} className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:border-brand-blue outline-none font-bold" placeholder="eibilbank" />
+              <input type="text" value={username} onChange={e => setUsername(e.target.value)} className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:border-brand-blue outline-none font-bold" />
             </div>
             <div className="space-y-2">
               <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Access Token</label>
-              <input type="password" value={password} onChange={e => setPassword(e.target.value)} className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:border-brand-blue outline-none font-bold" placeholder="••••••••" />
+              <input type="password" value={password} onChange={e => setPassword(e.target.value)} className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:border-brand-blue outline-none font-bold" />
             </div>
             <button type="submit" className="w-full bg-brand-navy text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] hover:bg-brand-blue transition-all shadow-xl shadow-brand-blue/20">
               Initialize Command
