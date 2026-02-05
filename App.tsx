@@ -13,6 +13,9 @@ import Policies from './pages/Policies';
 import LoanApplication from './pages/LoanApplication';
 import MarketTicker from './components/MarketTicker';
 import Admin from './pages/Admin';
+import NRI from './pages/NRI';
+import SME from './pages/SME';
+import Careers from './pages/Careers';
 
 const App: React.FC = () => {
   return (
@@ -28,6 +31,9 @@ const App: React.FC = () => {
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="/savings" element={<Savings />} />
+            <Route path="/nri" element={<NRI />} />
+            <Route path="/sme" element={<SME />} />
+            <Route path="/careers" element={<Careers />} />
             <Route path="/investor-relations/:category" element={<InvestorRelations />} />
             <Route path="/policies" element={<Policies />} />
             <Route path="/contact" element={<Contact />} />

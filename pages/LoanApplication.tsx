@@ -4,7 +4,7 @@ import {
   ShieldCheck, FileText, User, MapPin, Phone, 
   ArrowRight, CheckCircle, Upload, Database, 
   Loader2, Cloud, CreditCard, Landmark, 
-  Briefcase, AlertCircle, Scale, Coins, Building
+  Briefcase, AlertCircle, Scale, Coins, Building, Users
 } from 'lucide-react';
 
 const LoanApplication: React.FC = () => {
@@ -19,7 +19,7 @@ const LoanApplication: React.FC = () => {
     email: '',
     pan: '',
     aadhaar: '',
-    memberId: '',
+    memberId: '', // Added: Nidhi member verification
     
     // Financial & Professional
     occupation: 'Salaried',
@@ -31,6 +31,11 @@ const LoanApplication: React.FC = () => {
     amount: '',
     purpose: 'Personal/Emergency',
     collateral: '',
+    collateralDetail: '', // Added: Specifics (e.g. Grams of Gold, Property Area)
+    
+    // Guarantor info (Standard for Nidhi)
+    guarantorName: '',
+    guarantorPhone: '',
     
     // Disbursement
     bankAccount: '',
@@ -156,6 +161,10 @@ const LoanApplication: React.FC = () => {
                       <input required name="name" value={formData.name} onChange={handleInputChange} type="text" className="w-full px-6 py-5 bg-slate-50 border border-slate-200 rounded-2xl focus:border-brand-blue outline-none font-bold uppercase" placeholder="JOHN DOE" />
                     </div>
                     <div className="space-y-3">
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Member ID (If existing)</label>
+                      <input name="memberId" value={formData.memberId} onChange={handleInputChange} type="text" className="w-full px-6 py-5 bg-slate-50 border border-slate-200 rounded-2xl focus:border-brand-blue outline-none font-bold uppercase" placeholder="ENL-MEM-XXXX" />
+                    </div>
+                    <div className="space-y-3">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">PAN Card Number</label>
                       <input required name="pan" value={formData.pan} onChange={handleInputChange} type="text" maxLength={10} className="w-full px-6 py-5 bg-slate-50 border border-slate-200 rounded-2xl focus:border-brand-blue outline-none font-bold uppercase" placeholder="ABCDE1234F" />
                     </div>
@@ -167,7 +176,7 @@ const LoanApplication: React.FC = () => {
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Aadhaar Card Number</label>
                       <input required name="aadhaar" value={formData.aadhaar} onChange={handleInputChange} type="text" maxLength={12} className="w-full px-6 py-5 bg-slate-50 border border-slate-200 rounded-2xl focus:border-brand-blue outline-none font-bold" placeholder="1234 5678 9012" />
                     </div>
-                    <div className="space-y-3 md:col-span-2">
+                    <div className="space-y-3">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Official Email</label>
                       <input required name="email" value={formData.email} onChange={handleInputChange} type="email" className="w-full px-6 py-5 bg-slate-50 border border-slate-200 rounded-2xl focus:border-brand-blue outline-none font-bold" placeholder="mail@domain.com" />
                     </div>
@@ -203,6 +212,14 @@ const LoanApplication: React.FC = () => {
                     <div className="md:col-span-2 space-y-3">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Permanent Residential Address</label>
                       <textarea required name="address" value={formData.address} onChange={handleInputChange} className="w-full px-6 py-5 bg-slate-50 border border-slate-200 rounded-2xl focus:border-brand-blue outline-none font-bold h-32" placeholder="House No, Street, City, State, PIN..."></textarea>
+                    </div>
+                    <div className="space-y-3">
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Guarantor Name (Member)</label>
+                      <input required name="guarantorName" value={formData.guarantorName} onChange={handleInputChange} type="text" className="w-full px-6 py-5 bg-slate-50 border border-slate-200 rounded-2xl focus:border-brand-blue outline-none font-bold uppercase" placeholder="NAME OF GUARANTOR" />
+                    </div>
+                    <div className="space-y-3">
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Guarantor Mobile</label>
+                      <input required name="guarantorPhone" value={formData.guarantorPhone} onChange={handleInputChange} type="tel" className="w-full px-6 py-5 bg-slate-50 border border-slate-200 rounded-2xl focus:border-brand-blue outline-none font-bold" placeholder="+91 XXXX" />
                     </div>
                   </div>
                 </div>
@@ -243,7 +260,11 @@ const LoanApplication: React.FC = () => {
                     </div>
                     <div className="space-y-3">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Estimated Collateral Value (₹)</label>
-                      <input required name="collateral" value={formData.collateral} onChange={handleInputChange} type="text" className="w-full px-6 py-5 bg-slate-50 border border-slate-200 rounded-2xl focus:border-brand-blue outline-none font-bold" placeholder="Approx market value of gold/property" />
+                      <input required name="collateral" value={formData.collateral} onChange={handleInputChange} type="text" className="w-full px-6 py-5 bg-slate-50 border border-slate-200 rounded-2xl focus:border-brand-blue outline-none font-bold" placeholder="Approx market value" />
+                    </div>
+                    <div className="md:col-span-2 space-y-3">
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Detailed Collateral Specification</label>
+                      <textarea required name="collateralDetail" value={formData.collateralDetail} onChange={handleInputChange} className="w-full px-6 py-5 bg-slate-50 border border-slate-200 rounded-2xl focus:border-brand-blue outline-none font-bold h-24" placeholder="e.g. 48 grams 22K Gold, or 1200 sq.ft plot at Kunhari..."></textarea>
                     </div>
                   </div>
                   

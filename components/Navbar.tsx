@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Search, User, LogIn, Activity, Home as HomeIcon } from 'lucide-react';
+import { Menu, X, ChevronDown, Search, User, LogIn, Activity, Home as HomeIcon, Globe, Briefcase, GraduationCap } from 'lucide-react';
 import Logo from './Logo';
 
 const Navbar: React.FC = () => {
@@ -43,6 +43,7 @@ const Navbar: React.FC = () => {
         { name: 'NEFT/IMPS', path: '/savings#payments' },
       ]
     },
+    { name: 'Careers', path: '/careers' },
     { 
       name: 'Investors', 
       path: '#',
@@ -60,10 +61,12 @@ const Navbar: React.FC = () => {
       <div className="bg-brand-navy py-2 text-white/90 text-[11px] font-bold uppercase tracking-wider hidden md:block border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
           <div className="flex space-x-6 items-center">
-            <span className="text-white border-b-2 border-brand-red pb-1 cursor-pointer">Personal</span>
-            <span className="hover:text-white transition-colors cursor-pointer opacity-50">NRI</span>
-            <span className="hover:text-white transition-colors cursor-pointer opacity-50">SME</span>
-            <span className="text-brand-blue flex items-center font-black"><Activity size={10} className="mr-1"/> Portal Access</span>
+            <Link to="/" className={`pb-1 cursor-pointer transition-all border-b-2 ${location.pathname === '/' ? 'text-white border-brand-red' : 'text-white/60 border-transparent hover:text-white'}`}>Personal</Link>
+            <Link to="/nri" className={`pb-1 cursor-pointer transition-all border-b-2 ${location.pathname === '/nri' ? 'text-white border-brand-red' : 'text-white/60 border-transparent hover:text-white'}`}>NRI</Link>
+            <Link to="/sme" className={`pb-1 cursor-pointer transition-all border-b-2 ${location.pathname === '/sme' ? 'text-white border-brand-red' : 'text-white/60 border-transparent hover:text-white'}`}>SME</Link>
+            <Link to="/admin" className="text-brand-blue flex items-center font-black hover:text-white transition-colors">
+              <Activity size={10} className="mr-1"/> Portal Access
+            </Link>
           </div>
           <div className="flex space-x-4 items-center">
             <Link to="/contact" className="hover:text-white transition-colors">Customer Care</Link>
@@ -115,17 +118,17 @@ const Navbar: React.FC = () => {
                 </Link>
                 <Link to="/admin" className="bg-brand-red text-white flex items-center px-5 py-2.5 rounded font-black text-[11px] hover:brightness-110 transition-all cursor-pointer shadow-lg shadow-brand-red/20 uppercase">
                   <LogIn size={14} className="mr-2" />
-                  Admin Login
+                  Portal Login
                 </Link>
               </div>
             </div>
 
             {/* Mobile Toggle */}
             <div className="lg:hidden flex items-center space-x-4">
-              <Link to="/admin" className="text-brand-navy p-2"><User size={24} /></Link>
+              <Link to="/admin" className="text-brand-navy p-2 hover:text-brand-blue transition-colors"><User size={24} /></Link>
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-brand-navy p-2 transition-colors"
+                className="text-brand-navy p-2 transition-colors hover:text-brand-blue"
               >
                 {isOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
@@ -137,6 +140,14 @@ const Navbar: React.FC = () => {
       {/* Mobile Menu Overlay */}
       <div className={`lg:hidden fixed inset-0 top-[110px] bg-white z-[100] transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="p-6 space-y-6 h-full overflow-y-auto pb-24">
+          <div className="grid grid-cols-2 gap-4 pb-4 border-b border-slate-100">
+             <Link to="/nri" className="flex items-center justify-center space-x-2 py-4 bg-slate-50 rounded-xl text-brand-navy font-black text-xs uppercase">
+                <Globe size={16} /> <span>NRI</span>
+             </Link>
+             <Link to="/sme" className="flex items-center justify-center space-x-2 py-4 bg-slate-50 rounded-xl text-brand-navy font-black text-xs uppercase">
+                <Briefcase size={16} /> <span>SME</span>
+             </Link>
+          </div>
           {navLinks.map((link) => (
             <div key={link.name} className="border-b border-slate-100 pb-4">
               <Link to={link.path} className="font-black text-brand-navy py-2 text-lg uppercase tracking-tight block">{link.name}</Link>
@@ -150,8 +161,8 @@ const Navbar: React.FC = () => {
             </div>
           ))}
           <div className="pt-6 space-y-4">
-            <Link to="/apply-loan" className="block w-full bg-brand-red text-white py-4 rounded-xl font-black text-center uppercase tracking-widest text-sm">Loan Application</Link>
-            <Link to="/admin" className="block w-full bg-brand-navy text-white py-4 rounded-xl font-black text-center uppercase tracking-widest text-sm">Admin Portal</Link>
+            <Link to="/apply-loan" className="block w-full bg-brand-red text-white py-4 rounded-xl font-black text-center uppercase tracking-widest text-sm shadow-xl shadow-brand-red/20">Loan Application</Link>
+            <Link to="/admin" className="block w-full bg-brand-navy text-white py-4 rounded-xl font-black text-center uppercase tracking-widest text-sm shadow-xl shadow-brand-navy/20">Admin Portal</Link>
           </div>
         </div>
       </div>

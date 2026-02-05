@@ -29,6 +29,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3 text-sm text-slate-500 font-bold">
               <li><Link to="/about" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> About Us</Link></li>
               <li><Link to="/products" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> Product Catalog</Link></li>
+              <li><Link to="/careers" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> Careers</Link></li>
               <li><Link to="/investor-relations/financials" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> Investor Relations</Link></li>
               <li><Link to="/policies" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> Regulatory Policies</Link></li>
               <li><Link to="/contact" className="hover:text-brand-blue flex items-center"><ExternalLink size={14} className="mr-2 opacity-50"/> Contact Support</Link></li>
